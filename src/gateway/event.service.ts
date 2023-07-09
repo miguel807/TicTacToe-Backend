@@ -1,12 +1,11 @@
+import { Injectable } from "@nestjs/common";
 
-export class TicTacToeRepo{
+@Injectable()
+export class TicTacToService{
+        private board:any[9]
+        private player1:string
+        private player2:string
         
-        constructor(
-            private board:any[9],
-            private player1:string,
-            private player2:string,
-        ){}
-
         public getBoard(){
             return this.board;
         }
