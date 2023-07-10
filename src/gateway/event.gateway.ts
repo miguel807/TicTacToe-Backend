@@ -48,6 +48,8 @@ export class EventGateway implements OnGatewayInit,OnGatewayConnection{
             const board = this.tictactoService.getBoard();
             this.server.emit('play',{
                 "board":board,
+            })
+            this.server.emit('turn',{
                 "turn played by client with id ": this.lastPlayer,
                 "turn to be played for client with id: ": this.players.filter((player)=>player!=this.lastPlayer)
             })
@@ -60,7 +62,7 @@ export class EventGateway implements OnGatewayInit,OnGatewayConnection{
                 this.lastPlayer = this.tictactoService.getPlayer1(); 
             }
         }else{
-            client.emit('play',"its not your turn");
+            client.emit('turn',"its not your turn");
         }
         
         
